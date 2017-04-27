@@ -83,6 +83,9 @@ Game.prototype = {
 
         this.numPlayers = params["numPlayers"] || 1;
         this.teams = params["teamNames"] || ["Player"];
+        if (this.teams.length > this.numPlayers) {
+            this.teams.length.slice(0, this.numPlayers)
+        }
         this.showNotes = params["showNotes"] || false;
 
         this.scores = [];
@@ -118,17 +121,12 @@ Game.prototype = {
 
 var theGame = {};
 
-function checkExists(a) {
-    return a;
-}
-
 function start_new_game() {
 
     // pass in the user-selected options
     var params = [];
     params["numPlayers"] = document.getElementById("numPlayers").value;
-    params["teamNames"] = document.getElementById("playerNames").value.split("\n").filter(function(a){return a});
-
+    params["teamNames"] = document.getElementById("playerNames").value.split("\n").filter(function(a){return a !== ""});
     params["numRounds"] = document.getElementById("numRounds").value;
 
     //params["topics"] = getSelectValues(document.getElementById("topicSelect"));
@@ -140,7 +138,7 @@ function start_new_game() {
     if (theGame.numPlayers > 1) {
         var firstPlayer = Math.floor(theGame.numPlayers * Math.random()); // should be 0 or 1 for two players
         document.getElementById("question").innerHTML = theGame.teams[firstPlayer] + " goes first!";
-        this.currentPlayer = firstPlayer;
+        theGame.currentPlayer = firstPlayer;
 
         // show continue button after displaying message, in order to load question
         document.getElementById("divContinue").style.display = "block";
