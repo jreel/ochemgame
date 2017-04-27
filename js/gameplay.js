@@ -83,6 +83,7 @@ Game.prototype = {
 
         this.numPlayers = params["numPlayers"] || 1;
         this.teams = params["teamNames"] || ["Player"];
+        this.showNotes = params["showNotes"] || false;
 
         this.scores = [];
         for (var j = 0; j < this.numPlayers; j++) {
@@ -104,7 +105,7 @@ Game.prototype = {
         for (var q = 0; q < Questions.length; q++) {
             //var c = Questions[q].chapter + "";
             //if (this.chapters.indexOf(c) > -1) {
-                this.questionBank.push(Questions[q])
+                this.questionBank.push(Questions[q]);
             //}
         }
         this.questionBank = shuffleArray(this.questionBank);
@@ -117,21 +118,28 @@ Game.prototype = {
 
 var theGame = {};
 
+function checkExists(a) {
+    return a;
+}
+
 function start_new_game() {
 
     // pass in the user-selected options
     var params = [];
     params["numPlayers"] = document.getElementById("numPlayers").value;
-    params["teamNames"] = document.getElementById("playerNames").value.split("\n");
+    params["teamNames"] = document.getElementById("playerNames").value.split("\n").filter(function(a){return a});
+
     params["numRounds"] = document.getElementById("numRounds").value;
 
     //params["topics"] = getSelectValues(document.getElementById("topicSelect"));
+
+    params["showNotes"] = document.getElementById("showNotes").checked;
     theGame = new Game(params);
     
     // if more than two players/teams, select one randomly to go first
     if (theGame.numPlayers > 1) {
         var firstPlayer = Math.floor(theGame.numPlayers * Math.random()); // should be 0 or 1 for two players
-        document.getElementById("question").innerHTML = theGame.teams[firstPlayer] + " goes first!"
+        document.getElementById("question").innerHTML = theGame.teams[firstPlayer] + " goes first!";
         this.currentPlayer = firstPlayer;
 
         // show continue button after displaying message, in order to load question
@@ -164,7 +172,7 @@ function show_new_question() {
 
     // show question on screen, along with randomized answer choices
     var pturn = document.getElementById("playerTurn");
-    pturn.innerHTML = "Round: " + theGame.currentRound;
+    pturn.innerHTML = "Round " + theGame.currentRound;
     pturn.innerHTML += (theGame.numPlayers > 1) ? ", Turn: " + theGame.teams[theGame.currentPlayer] : "";
 
     document.getElementById("question").innerHTML = theGame.currentQuestion;
@@ -174,7 +182,7 @@ function show_new_question() {
     if (newq.randomize === undefined) {    // here, undefined should default to 'true', i.e., randomize
         newq.choices = shuffleArray(newq.choices);
     }
-    var alpha = ["A", "B", "C", "D"]
+    var alpha = ["A", "B", "C", "D"];
     for (var a = 0; a < aForm.length; a++) {
         aForm.elements[a].disabled = false;
         aForm.elements[a].value = newq.choices[a];
@@ -235,7 +243,7 @@ function check_answer(clicked) {
 
     score.innerHTML = "";
     for (a in theGame.teams) {
-        score.innerHTML += theGame.teams[a] + ":" + theGame.scores[a];
+        score.innerHTML += theGame.teams[a] + ": " + theGame.scores[a];
         if (a < theGame.teams.length - 1) {
             score.innerHTML += ", "
         }
@@ -248,13 +256,27 @@ function check_answer(clicked) {
 
     msg.innerHTML = newMsg;
 
-    //newNote += theGame.currentNote + "<br><br>" + orig;
+    if (theGame.showNotes) {
+        newNote += theGame.currentNote + "<br><br>" + orig;
+    }
     noteArea.innerHTML = newNote;
     noteArea.style.display = "block";
 }
 
 function end_game() {
-    document.getElementById("question").innerHTML = "Refresh the page if you want to play again!";
+    //document.getElementById("question").innerHTML = "Refresh the page if you want to play again!";
+
+        var qel = document.getElementById("question");
+        qel.innerHTML = "Click below if you want to play again!<br><br>";
+
+     var b = document.createElement("BUTTON");
+     var t = document.createTextNode("Play Again");
+     b.appendChild(t);
+    b.id = "btnAgain";
+     qel.appendChild(b);
+     b.onclick = function(){location.reload()};
+
+
     document.getElementById("answers").style.display = "none";
     document.getElementById("notes").innerHTML = "";
     document.getElementById("notes").style.display = "none";

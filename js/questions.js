@@ -414,7 +414,7 @@ var Questions = [
     {
         topic: "Acids & Bases",
         question: "What is the Bronsted-Lowry definition of an acid?",
-        choices: ["a proton (H<sup>+</sup>) donor", "a proton acceptor", "a lone pair donor", "a lone pair acceptor"],
+        choices: ["a proton (H<sup>+</sup>) donor", "a proton acceptor", "an electron pair donor", "an electron pair acceptor"],
         correct: 1,
         randomize: false,
         note: "A Bronsted-Lowry acid is a proton donor."
@@ -423,7 +423,7 @@ var Questions = [
     {
         topic: "Acids & Bases",
         question: "What is the Bronsted-Lowry definition of a base?",
-        choices: ["a proton (H<sup>+</sup>) donor", "a proton acceptor", "a lone pair donor", "a lone pair acceptor"],
+        choices: ["a proton (H<sup>+</sup>) donor", "a proton acceptor", "an electron pair donor", "an electron pair acceptor"],
         correct: 2,
         randomize: false,
         note: "A Bronsted-Lowry base is a proton acceptor."
@@ -432,19 +432,19 @@ var Questions = [
     {
         topic: "Acids & Bases",
         question: "What is the Lewis definition of an acid?",
-        choices: ["a proton (H<sup>+</sup>) donor", "a proton acceptor", "a lone pair donor", "a lone pair acceptor"],
+        choices: ["a proton (H<sup>+</sup>) donor", "a proton acceptor", "an electron pair donor", "an electron pair acceptor"],
         correct: 4,
         randomize: false,
-        note: "A Lewis acid is a lone pair acceptor."
+        note: "A Lewis acid is an electron pair acceptor."
     },
 
     {
         topic: "Acids & Bases",
         question: "What is the Lewis definition of a base?",
-        choices: ["a proton (H<sup>+</sup>) donor", "a proton acceptor", "a lone pair donor", "a lone pair acceptor"],
+        choices: ["a proton (H<sup>+</sup>) donor", "a proton acceptor", "an electron pair donor", "an electron pair acceptor"],
         correct: 3,
         randomize: false,
-        note: "A Lewis base is a lone pair donor."
+        note: "A Lewis base is an electron pair donor."
     },
 
     {
@@ -559,9 +559,9 @@ var Questions = [
     {
         topic: "Spectroscopy",
         question: "The compound 2-chloropropane should produce which of the following <sup>1</sup>H NMR patterns?",
-        choices: ["One signal: 7H singlet", "Two signals: 6H doublet, 1H multiplet", "Two signals: 4H triplet, 3H doublet", "Three signals: 2H triplet, 2H doublet, 3H doublet"],
+        choices: ["One signal: 7H singlet", "Two signals: 6H doublet, 1H septet", "Two signals: 6H triplet, 1H doublet", "Three signals: 3H triplet, 3H triplet, 1H singlet"],
         correct: 2,
-        note: "There are two sets of protons here, so two signals would be expected. C1 and C3 are equivalent due to symmetry, so they form a 6H signal, which is split into a doublet by the single proton on C2."
+        note: "There are two sets of protons here, so two signals would be expected. C1 and C3 are equivalent due to symmetry, so they form a 6H signal, which is split into a doublet by the single proton on C2. The single proton on C2 is split into a septet by the neighboring six protons on C1 and C3."
     },
 
     {
@@ -569,7 +569,7 @@ var Questions = [
         question: "The compound methyl tert-butyl ether, (CH<sub>3</sub>)<sub>3</sub>C-O-CH<sub>3</sub>, should produce which of the following <sup>1</sup>H NMR patterns?",
         choices: ["One signal: 12H singlet", "Two signals: 3H singlet, 9H singlet", "Two signals: 3H singlet, 9H triplet", "Four signals, each a 3H singlet"],
         correct: 2,
-        note: "The protons on the tert-butyl group are all equivalent, so they form a 9H signal, which is a singlet due to no neighboring protons on the 4&deg; tert-butyl carbon. The methyl group forms another 3H singlet, since it also does not have any neighboring protons."
+        note: "The protons on the tert-butyl group are all equivalent so they form a 9H signal, which is a singlet due to no neighboring protons on the 4&deg; tert-butyl carbon. The O-methyl group forms another 3H singlet, since it also does not have any neighboring protons."
     },
 
     {

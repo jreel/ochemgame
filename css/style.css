@@ -1,12 +1,13 @@
 #top {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     font-size: 20pt;
     font-weight: bold;
 }
 
 #playerTurn {
     float: left;
+    color: #0000cc;
 }
 
 #score {
@@ -26,7 +27,6 @@
     display: block;
     margin: auto;
     margin-bottom: 20px;
-    margin-top: 100px;
     font-size: 16pt;
     font-weight: bold;
     text-align: center;
@@ -70,23 +70,16 @@
     font-size: 16pt;
 }
 
-#btnPlay {
+#btnPlay, #btnContinue, #btnAgain {
     width: 200px;
     height: 50px;
     font-size: 16pt;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 #divContinue {
     margin: auto;
     text-align: center;
-}
-
-#btnContinue {
-    width: 200px;
-    height: 50px;
-    font-size: 16pt;
-    margin-top: 50px;
 }
 
 .let {
