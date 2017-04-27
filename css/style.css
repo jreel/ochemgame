@@ -1,0 +1,106 @@
+#top {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+#playerTurn {
+    float: left;
+}
+
+#score {
+    float: right;
+}
+
+#message {
+    display: block;
+    font-size: 18pt;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+    max-width: 60%;
+}
+
+#question {
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 100px;
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    max-width: 60%;
+}
+
+#answers {
+    margin: auto;
+    text-align: center;
+}
+
+#answersForm table {
+    margin: auto;
+    width: auto;
+    table-layout: fixed;
+}
+
+#answersForm table tr td {
+    width: 50%;
+    min-width: 50%;
+}
+
+#answersForm table tr td button {
+    width: 100%;
+    min-width: 200px;
+    height: auto;
+    min-height: 40px;
+    font-size: 14pt;
+    margin: 5px 5px;
+    text-align: left;
+    box-shadow: 2px 2px;
+}
+
+#notes {
+    display: none;
+    font-style: italic;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    max-width: 60%;
+    font-size: 16pt;
+}
+
+#btnPlay {
+    width: 200px;
+    height: 50px;
+    font-size: 16pt;
+    margin-top: 50px;
+}
+
+#divContinue {
+    margin: auto;
+    text-align: center;
+}
+
+#btnContinue {
+    width: 200px;
+    height: 50px;
+    font-size: 16pt;
+    margin-top: 50px;
+}
+
+.let {
+    color: yellow;
+    font-weight: bold;
+    font-size: 18pt;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    margin-right: 10px;
+}
+
+#numPlayers {
+    width: 40px;
+}
+
+#numRounds {
+    width: 60px;
+}

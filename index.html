@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OChem Quiz Game</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/questions.js"></script>
+    <script src="js/gameplay.js"></script>
+    <script>
+        function init() {
+      //      create_topics_list();
+        }
+    </script>
+</head>
+<body onload="init();">
+
+<div id="top" style="display:block; margin-bottom:20px;">
+    <div id="playerTurn" style="float: left; color:#0000cc">OChem Quiz Game</div>
+    <div id="score" style="float: right"></div>
+    <br style="clear: both">
+</div>
+
+<div id="question" style="display:block; margin-bottom:20px;">
+
+Select the options you want, then click Play.<br><br>
+
+    <form action="" name="optionsForm" id="optionsForm">
+
+        Number of Players: <input type="number" id="numPlayers" name="numPlayers" min="1" max="2" value="1"><br><br>
+
+        <div id="namesDiv">
+        Player or Team Names (one per line):<br>
+        <textarea rows="4" cols="40" id="playerNames">Player</textarea>
+        </div><br><br>
+
+        Number of Rounds: <input type="number" id="numRounds" name="numRounds" min="1" max="30" value="10">
+
+
+        <!--
+        Include questions from the following topics:<br>
+        <select multiple id="topicSelect" style="margin-top:20px;">
+
+        </select>
+        <br>
+        <em style="font-size:12pt">(Hold Shift to select more than one)</em><br>
+        //-->
+
+    </form>
+
+    <input type="button" id="btnPlay" value="Play" onclick="start_new_game();"/>
+</div>
+
+<div id="answers" style="display:none">
+    <form action="" name="answersForm" id="answersForm">
+        <table>
+            <tr>
+                <td><button type="button" name="A" value="A" onclick="check_answer(this.value);this.blur();">A</button></td>
+                <td><button type="button" name="B" value="B" onclick="check_answer(this.value);this.blur();">B</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" name="C" value="C" onclick="check_answer(this.value);this.blur();">C</button></td>
+                <td><button type="button" name="D" value="D" onclick="check_answer(this.value);this.blur();">D</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div id="message"></div>
+
+<div id="divContinue" style="display:none">
+    <input type="button" id="btnContinue" value="Continue" onclick="show_new_question();"/>
+</div>
+
+<div id="notes"></div>
+
+</body>
+</html>
