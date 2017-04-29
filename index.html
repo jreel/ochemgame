@@ -6,47 +6,70 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/questions.js"></script>
-    <script src="js/gameplay.js"></script>
+    <script src="js/gameplay_single.js"></script>
     <script>
+        function toggleRounds(chk) {
+            document.getElementById("numRounds").disabled = chk;
+        }
         function init() {
-      //      create_topics_list();
+            populate_topics_list();
         }
     </script>
 </head>
 <body onload="init();">
 
 <div id="top">
-    <div id="playerTurn">OChem Quiz Game</div>
+    <div id="playerTurn">OChem Quiz Game (Single Player Version)</div>
     <div id="score"></div>
     <br style="clear: both">
 </div>
 
 <div id="question">
 
-Select the options you want, then click Play.<br><br>
+Select the options you want, then click Play.<br>
 
     <form action="" name="optionsForm" id="optionsForm">
 
-        Number of Players: <input type="number" id="numPlayers" name="numPlayers" min="1" max="2" value="1"><br>
+        <table id="formTable">
+            <tr>
+                <td>
 
-        <div id="namesDiv">
-        Player or Team Names (one per line):<br>
-        <textarea rows="4" cols="40" id="playerNames">Player</textarea>
-        </div><br>
+                    Select the topics you want to review:<br><br>
+                    <table>
+                        <tr>
+                            <td>
+                                All Topics:<br>
+                                <select multiple id="topicAvail" size="10"></select>
+                            </td>
+                            <td>
+                                <button type="button" id="btnAdd" onclick="moveListItem('right');this.blur();">Add &gt;</button><br>
+                                <button type="button" id="btnRem" onclick="moveListItem('left');this.blur();">&lt; Rem</button><br><br>
+                                <button type="button" id="btnAddAll" onclick="moveListAll();this.blur();">All &gt;&gt;</button>
+                            </td>
+                            <td>
+                                Selected:<br>
+                                <select multiple id="topicSel" size="10"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
 
-        Number of Rounds: <input type="number" id="numRounds" name="numRounds" min="1" max="30" value="10"><br><br>
+                <td id="spacer"></td>
 
+                <td>
+                    Number of questions: <input type="number" id="numRounds" name="numRounds" min="1" max="30"
+                                             value="10"><br>
+                    (or ALL of them: <input type="checkbox" id="playAll" name="playAll"
+                                                           onclick="toggleRounds(this.checked)"> )<br><br><br>
 
-        <!--
-        Include questions from the following topics:<br>
-        <select multiple id="topicSelect" style="margin-top:20px;">
+                    Show explanations after answering: <input type="checkbox" id="showNotes" name="showNotes" checked><br><br><br>
 
-        </select>
-        <br>
-        <em style="font-size:12pt">(Hold Shift to select more than one)</em><br>
-        //-->
+                    "Sudden Death" mode: <input type="checkbox" id="suddenDeath"><br>
+                    (wrong answer ends the game)
 
-        Show explanations after answering: <input type="checkbox" id="showNotes" name="showNotes"><br>
+                </td>
+            </tr>
+        </table>
 
     </form>
 

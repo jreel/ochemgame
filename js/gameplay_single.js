@@ -2,13 +2,12 @@
  * Created by jreel on 4/23/2017.
  */
 
-
 /**
  *  How it works:
  *  
  *  The player is initially presented with various options, and a "Start" button.
  *  Options include:
- *      - number of players (1 or 2)
+ *      - number of rounds to play
  *      - "single elimination" (that is, get one wrong and you lose)
  *      - a list of topics to include/exclude questions
  *  
@@ -20,7 +19,6 @@
  *    the score is updated,
  *    and a new question is presented.
  *    (the game should keep track of which questions have been presented, to avoid repeats)
- *    
  *
  */
 
@@ -39,22 +37,44 @@ function shuffleArray(array) {
 }
 
 // Return an array of selected values from a SELECT element
-function getSelectValues(elSelect) {
+function getSelectValues(el) {
     var result = [];
-    var choices = elSelect && elSelect.options;
-    var opt;
+    var opt = el.options;
 
-    for (var i = 0, len = choices.length; i < len; i++) {
-        opt = choices[i];
-
-        if (opt.selected) {
-            result.push(opt.value || opt.text);
+    for (var i = 0, len = opt.length; i < len; i++) {
+        if (opt[i].selected) {
+            result.push(opt[i].value || opt[i].text);
         }
     }
     return result;
 }
+function countSelectValues(el) {
+    var opt = el.options;
+    var count = 0;
+    for (var i = 0; i < opt.length; i++) {
+        if (opt[i].selected) {
+            count++;
+        }
+    }
+    return count;
+}
+function sortSelect(el) {
+    var tmp = [];
+    for (var i = 0; i < el.options.length; i++) {
+        tmp[i] = [];
+        tmp[i][0] = el.options[i].text;
+        tmp[i][1] = el.options[i].value;
+    }
+    tmp.sort();
+    while (el.options.length > 0) {
+        el.options[0] = null;
+    }
+    for (var j = 0; j < tmp.length; j++) {
+        el.options[j] = new Option(tmp[j][0], tmp[j][1]);
+    }
+}
 
-function create_topics_list() {
+function generate_topics_list() {
     var qtop = [];
     for (var q = 0; q < Questions.length; q++) {
         var t = Questions[q].topic;
@@ -63,15 +83,48 @@ function create_topics_list() {
         }
     }
     qtop.sort();
-
-    var chapList = document.getElementById("topicSelect");
+    return qtop;
+}
+function populate_topics_list() {
+    var qtop = generate_topics_list();
+    var topAv = document.getElementById("topicAvail");
     var o;
     for (var i = 0; i < qtop.length; i++) {
         o = document.createElement("option");
         o.text = qtop[i];
         o.value = qtop[i];
-        chapList.add(o);
+        topAv.add(o);
     }
+}
+
+function moveListItem(dir) {
+    var source, dest, item;
+
+    if (dir == 'right') {
+        source = document.getElementById("topicAvail");
+        dest = document.getElementById("topicSel");
+    }
+    else {
+        dest = document.getElementById("topicAvail");
+        source = document.getElementById("topicSel");
+    }
+
+    var len = source.options.length ;
+    for (var j = len - 1; j >= 0; j--) {
+        item = source.options[j];
+        if (item.selected) {
+            dest.appendChild(item);
+        }
+    }
+    sortSelect(dest);
+
+}
+function moveListAll() {
+    var list = document.getElementById("topicAvail");
+    for (var a = 0; a < list.options.length; a++) {
+        list.options[a].selected = true;
+    }
+    moveListItem('right');
 }
 
 function Game(params) {
@@ -81,40 +134,32 @@ function Game(params) {
 Game.prototype = {
     _createNewGame: function(params) {
 
-        this.numPlayers = params["numPlayers"] || 1;
-        this.teams = params["teamNames"] || ["Player"];
-        if (this.teams.length > this.numPlayers) {
-            this.teams.length.slice(0, this.numPlayers)
-        }
-        this.showNotes = params["showNotes"] || false;
+        this.numTeams = 1;
+        this.showNotes = params["showNotes"] || true;
+        this.suddenDeath = params["suddenDeath"] || false;
 
-        this.scores = [];
-        for (var j = 0; j < this.numPlayers; j++) {
-            this.scores.push(0);
-        }
-        this.currentPlayer = 0;
+        this.score = 0;
         this.currentQuestion = null;
         this.currentCorrectAnswer = null;
         this.currentNote = null;
 
-        // this.topics = params["topics"] || [];
-        // this.
+        this.topics = params["topics"] || generate_topics_list();
 
-        // generate question bank array, excluding topics
+        // generate question bank array, including selected topics
         // each time a question is shown, it is removed from the list
         // to avoid repeats
 
         this.questionBank = [];
         for (var q = 0; q < Questions.length; q++) {
-            //var c = Questions[q].chapter + "";
-            //if (this.chapters.indexOf(c) > -1) {
+            var t = Questions[q].topic + "";
+            if (this.topics.indexOf(t) > -1) {
                 this.questionBank.push(Questions[q]);
-            //}
+            }
         }
         this.questionBank = shuffleArray(this.questionBank);
 
-        this.rounds = params["numRounds"] || Math.floor(this.questionBank.length / this.numPlayers);
-        this.turnsLeft = this.rounds * this.numPlayers;
+        this.rounds = params["numRounds"] || Math.floor(this.questionBank.length / this.numTeams);
+        this.turnsLeft = this.rounds * this.numTeams;
         this.currentRound = 1;
     }
 };
@@ -125,29 +170,20 @@ function start_new_game() {
 
     // pass in the user-selected options
     var params = [];
-    params["numPlayers"] = document.getElementById("numPlayers").value;
-    params["teamNames"] = document.getElementById("playerNames").value.split("\n").filter(function(a){return a !== ""});
-    params["numRounds"] = document.getElementById("numRounds").value;
+    params["numRounds"] = document.getElementById("numRounds").disabled ? 0 : document.getElementById("numRounds").value;
 
-    //params["topics"] = getSelectValues(document.getElementById("topicSelect"));
+    params["topics"] = [];
+    var seltop = document.getElementById("topicSel");
+    for (var i = 0; i < seltop.options.length; i++) {
+        params["topics"].push(seltop.options[i].value);
+    }
 
     params["showNotes"] = document.getElementById("showNotes").checked;
+    params["suddenDeath"] = document.getElementById("suddenDeath").checked;
     theGame = new Game(params);
     
-    // if more than two players/teams, select one randomly to go first
-    if (theGame.numPlayers > 1) {
-        var firstPlayer = Math.floor(theGame.numPlayers * Math.random()); // should be 0 or 1 for two players
-        document.getElementById("question").innerHTML = theGame.teams[firstPlayer] + " goes first!";
-        theGame.currentPlayer = firstPlayer;
-
-        // show continue button after displaying message, in order to load question
-        document.getElementById("divContinue").style.display = "block";
-    }
-    else {
-        // only one player, so just show the first question
-        show_new_question();
-    }
-
+    // only one player, so just show the first question
+    show_new_question();
 }
 
 
@@ -171,10 +207,10 @@ function show_new_question() {
     // show question on screen, along with randomized answer choices
     var pturn = document.getElementById("playerTurn");
     pturn.innerHTML = "Round " + theGame.currentRound;
-    pturn.innerHTML += (theGame.numPlayers > 1) ? ", Turn: " + theGame.teams[theGame.currentPlayer] : "";
 
     document.getElementById("question").innerHTML = theGame.currentQuestion;
     document.getElementById("notes").innerHTML = "(Topic: " + newq.topic + ")";
+    document.getElementById("notes").style.display = "block";
     
     var aForm = document.getElementById("answersForm");
     if (newq.randomize === undefined) {    // here, undefined should default to 'true', i.e., randomize
@@ -201,51 +237,42 @@ function check_answer(clicked) {
     var newMsg = "";
     var newNote = "";
 
-    var c = theGame.currentPlayer;
-
     if (theGame.currentCorrectAnswer == clicked) {
-        newMsg += "<p style='color:#008800'>Correct!<br>";
-        newMsg += theGame.teams[c] + " gains a point!</p>";
+        newMsg += "<p style='color:#008800'>Correct! ";
+        newMsg += "You gain a point!</p>";
 
-        theGame.scores[c] += 1;
+        theGame.score += 1;
 
     }
     else {
-        newMsg += "<p style='color:#cc0000'>Sorry, that's wrong... better luck next time!<br>";
-        newMsg += theGame.teams[c] + " does NOT gain a point!</p>";
+        newMsg += "<p style='color:#cc0000'>Sorry, that's incorrect. ";
+        if (!theGame.suddenDeath) {
+            newMsg += " You LOSE a point!</p>";
 
-        //end_game();
+            theGame.score -= 1;
+        }
+        else {
+            newMsg += "<br>Game over! Better luck next time!</p>";
+            document.getElementById("divContinue").onclick = null;
+            document.getElementById("divContinue").onclick = function () {end_game()};
+        }
     }
     if (theGame.questionBank.length > 0 && theGame.turnsLeft > 1) {
         // decrement turnsLeft
         theGame.turnsLeft--;
 
-        if (theGame.turnsLeft%theGame.numPlayers == 0) {
+        if (theGame.turnsLeft%theGame.numTeams == 0) {
             theGame.currentRound++;
         }
 
-        // switch teams, show message
-        if (theGame.numPlayers > 1) {
-            // go to next player
-            theGame.currentPlayer = (c+1)%theGame.numPlayers;
-
-            newMsg += theGame.teams[theGame.currentPlayer] + ", you're up next!";
-        }
     }
     else {
-        newMsg += "<p style='color:#0000cc'>That's all, folks!</p>";
-        //end_game();
+        document.getElementById("divContinue").onclick = null;
         document.getElementById("divContinue").onclick = function(){end_game()};
     }
     document.getElementById("divContinue").style.display = "block";
 
-    score.innerHTML = "";
-    for (a in theGame.teams) {
-        score.innerHTML += theGame.teams[a] + ": " + theGame.scores[a];
-        if (a < theGame.teams.length - 1) {
-            score.innerHTML += ", "
-        }
-    }
+    score.innerHTML = "Score: " + theGame.score;
 
     var aForm = document.getElementById("answersForm");
     for (var a = 0; a < aForm.length; a++) {
@@ -262,10 +289,12 @@ function check_answer(clicked) {
 }
 
 function end_game() {
-    //document.getElementById("question").innerHTML = "Refresh the page if you want to play again!";
 
         var qel = document.getElementById("question");
-        qel.innerHTML = "Click below if you want to play again!<br><br>";
+
+        qel.innerHTML = "<p style='color:#0000cc'>Game Over! (" + theGame.currentRound + " rounds completed)<br>";
+        qel.innerHTML += "Final Score: " + theGame.score + "</p>";
+        qel.innerHTML += "Click below if you want to play again!<br><br>";
 
      var b = document.createElement("BUTTON");
      var t = document.createTextNode("Play Again");
@@ -281,31 +310,6 @@ function end_game() {
     document.getElementById("message").style.display = "none";
 }
 
-/*
-function checkTeamPlay(el) {
-    var d = document.getElementById("teamPlayDiv");
-    var p = document.getElementById("teamPlay");
-    if (el.value > 1){
-        d.style.display = "block";
-    }
-    else {
-        d.style.display = "none";
-    }
-    p.checked = (el.value > 1);
-    showTeamInput(p);
-
-}
-
-function showTeamInput(el) {
-    var d = document.getElementById("teamNameDiv");
-    if (el.checked) {
-        d.style.display = "block";
-    }
-    else {
-        d.style.display = "none";
-    }
-}
-*/
 
 
 

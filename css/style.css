@@ -1,3 +1,6 @@
+body {
+    text-align: center;
+}
 #top {
     display: block;
     margin-bottom: 50px;
@@ -31,6 +34,37 @@
     font-weight: bold;
     text-align: center;
     max-width: 60%;
+}
+
+#formTable {
+    width: auto;
+    border: 2px solid #999;
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+    table-layout: fixed;
+}
+#formTable tr td {
+    text-align: center;
+    width: auto;
+    vertical-align: top;
+}
+#formTable td table {
+    width: 90%;
+    text-align: center;
+}
+#formTable td table td {
+    vertical-align: middle;
+}
+
+#spacer {
+    width: 10% !important;
+    max-width: 100px !important;
+    min-width: 50px !important;
+}
+
+#topicSel, #topicAvail {
+    min-width: 100px;
 }
 
 #answers {
@@ -90,7 +124,7 @@
     margin-right: 10px;
 }
 
-#numPlayers {
+#numTeams {
     width: 40px;
 }
 
