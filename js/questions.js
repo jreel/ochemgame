@@ -12,8 +12,8 @@
 var Questions = [
 
     {
-        topic: "Alcohols",
-        question: "Which of the following methods could NOT be use to synthesize an alcohol?",
+        topic: "Synthesis",
+        question: "Which of the following methods could NOT be used to synthesize an alcohol?",
         choices: ["epoxide ring-opening", "acid-catalyzed dehydration", "hydroboration-oxidation", "reaction of NaOH with a 1&deg; alkyl halide"],
         correct: 2,
         note: "Acid-catalyzed <u>de</u>hydration converts an alcohol into an alkene."
@@ -61,7 +61,7 @@ var Questions = [
 
     {
         topic: "Ethers",
-        question: "Which of the following methods could NOT be use to synthesize an ether from an alkene?",
+        question: "Which of the following methods could NOT be used to synthesize an ether from an alkene?",
         choices: ["oxymercuration in alcohol solvent", "acid + alcohol", "Williamson ether synthesis", "Br<sub>2</sub> + alcohol"],
         correct: 3,
         note: "Williamson ether synthesis is a reaction of an alkoxide with an alkyl halide -- no alkene is involved."
@@ -121,7 +121,7 @@ var Questions = [
         choices: ["oxidative workup (H<sub>2</sub>O<sub>2</sub>)", "reductive workup (CH<sub>3</sub>)<sub>2</sub>S)", "at least two double bonds", "only one double bond, in a ring"],
         correct: 4,
         randomize: false,
-        note: "Ozonolysis cleaves an alkene double bond, separating the two carbons. In order for fragments to not be lost, then, the double bond must occur within a ring, such that the carbonyls are still connected by a carbon chain at the end."
+        note: "Ozonolysis cleaves an alkene double bond, separating the two carbons. In order for fragments to not be lost, then, the double bond must occur within a ring, such that the carbonyls are still connected by a carbon chain afterwards."
     },
 
     {
@@ -452,7 +452,7 @@ var Questions = [
         question: "Which of the following is the strongest acid?",
         choices: ["CH<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub>", "CH<sub>3</sub>-C&equiv;C-H", "CH<sub>3</sub>CH<sub>2</sub>OH", "CH<sub>3</sub>CH<sub>2</sub>NH<sub>2</sub>"],
         correct: 3,
-        note: "The strongest acid has the most stable conjugate base. The alcohol would have the most stable conjugate base, and therefore would be the strongest acid."
+        note: "The strongest acid has the most stable conjugate base. The alcohol would have the most stable conjugate base (placing a negative charge on an electronegative atom like oxygen is a stabilizing effect), and therefore would be the strongest acid."
     },
 
     {
@@ -460,7 +460,7 @@ var Questions = [
         question: "Which of the following is the weakest acid?",
         choices: ["CH<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub>", "CH<sub>3</sub>-C&equiv;C-H", "CH<sub>3</sub>CH<sub>2</sub>OH", "CH<sub>3</sub>CH<sub>2</sub>NH<sub>2</sub>"],
         correct: 1,
-        note: "The strongest acid has the most stable conjugate base. The alkane would have the most unstable conjugate base, and therefore would be the weakest acid."
+        note: "The strongest acid has the most stable conjugate base. The alkane would have the most unstable conjugate base, and therefore would be the weakest acid. (In fact, the pKa of an alkane is ~50.)"
     },
 
     {
@@ -468,7 +468,7 @@ var Questions = [
         question: "Which of the following is the strongest base?",
         choices: ["CH<sub>3</sub>CH<sub>2</sub>MgBr", "NaNH<sub>2</sub>", "KOtBu", "NaOAc"],
         correct: 1,
-        note: "The strongest base has the weakest conjugate acid. The conjugate acid of the Grignard reagent (CH<sub>3</sub>CH<sub>2</sub>MgBr) is an alkane, which is an incredibly weak acid; therefore the Grignard reagent would be the strongest base."
+        note: "The strongest base has the weakest conjugate acid. The conjugate acid of the Grignard reagent (CH<sub>3</sub>CH<sub>2</sub>MgBr) is an alkane, which is an incredibly weak acid (pKa ~50); therefore the Grignard reagent would be the strongest base."
     },
 
     {
@@ -492,7 +492,7 @@ var Questions = [
         question: "Which of the following is the strongest acid?",
         choices: ["Cl-CH<sub>2</sub>-COOH", "F-CH<sub>2</sub>-COOH", "F-CH<sub>2</sub>CH<sub>2</sub>-COOH", "CH<sub>3</sub>-COOH"],
         correct: 2,
-        note: "The strongest acid has the most stable conjugate base. The negative charge of the conjugate base can be stabilized via induction from a nearby electronegative atom; higher electronegativity and closer proximity result in higher stabilization, therefore F-CH<sub>2</sub>-COOH is the strongest acid."
+        note: "The strongest acid has the most stable conjugate base. The negative charge of the conjugate base can be stabilized via induction from a nearby electronegative atom. Higher electronegativity and closer proximity result in higher stabilization, therefore F-CH<sub>2</sub>-COOH is the strongest acid."
     },
 
     {
@@ -510,7 +510,7 @@ var Questions = [
         choices: ["enantiomers", "diastereomers", "meso compound", "constitutional isomers"],
         correct: 1,
         randomize: false,
-        note: "These are enantiomers, since they differ at -every- stereocenter."
+        note: "These are enantiomers, since they differ at every stereocenter."
     },
 
     {
@@ -551,9 +551,9 @@ var Questions = [
     {
         topic: "Alkanes",
         question: "Which compound has the greatest degree of unsaturation?",
-        choices: ["2-cyclopropyl-3-hexyne", "3-methylcyclohexene", "2,3-dicyclopropylpentane", "1-ethylcyclopentene"],
+        choices: ["2-cyclopropyl-3-hexyne", "3-methylcyclohexene", "2,3-dicyclopropylbutane", "1-ethylcyclopentene"],
         correct: 1,
-        note: "Each ring and/or pi-bond accounts for one degree of unsaturation. The cyclopropylhexyne has 2 pi-bonds and 1 ring; the cyclohexene and cyclopentene each have 1 pi-bond and 1 ring; the dicyclopropylpentane has no pi-bonds and 2 rings."
+        note: "Each ring and/or pi-bond accounts for one degree of unsaturation. The cyclopropylhexyne has 2 pi-bonds and 1 ring; the cyclohexene and cyclopentene each have 1 pi-bond and 1 ring; the dicyclopropylbutane has no pi-bonds and 2 rings."
     },
 
     {
@@ -575,7 +575,7 @@ var Questions = [
     {
         topic: "Spectroscopy",
         question: "The compound 1-chloro-2-propanol should exhibit which of the following in its IR spectrum?",
-        choices: ["A sharp, strong peak around 1710 cm<sup>-1</sup>", "A broad peak between 3500-3200 cm<sup>-1</sup>", "A closely-grouped set of peaks just above 3000 cm<sup>-1</sup>", "none of these"],
+        choices: ["A sharp, strong peak around 1700 cm<sup>-1</sup>", "A broad peak between 3500-3200 cm<sup>-1</sup>", "A closely-grouped set of peaks around 3010 cm<sup>-1</sup>", "none of these"],
         correct: 2,
         note: "A broad peak between 3500-3200 cm<sup>-1</sup> on an IR spectrum corresponds to an O-H stretch, which is characteristic of an alcohol."
     },
@@ -583,8 +583,96 @@ var Questions = [
     {
         topic: "Spectroscopy",
         question: "The compound 2-butanone (a ketone) should exhibit which of the following in its IR spectrum?",
-        choices: ["A sharp, strong peak around 1710 cm<sup>-1</sup>", "A broad peak between 3500-3200 cm<sup>-1</sup>", "A closely-grouped set of peaks just above 3000 cm<sup>-1</sup>", "none of these"],
+        choices: ["A sharp, strong peak around 1700 cm<sup>-1</sup>", "A broad peak between 3500-3200 cm<sup>-1</sup>", "A closely-grouped set of peaks around 3010 cm<sup>-1</sup>", "none of these"],
         correct: 1,
-        note: "A sharp, strong peak around 1710 cm<sup>-1</sup> on an IR spectrum corresponds to a C=O stretch, which is characteristic of a carbonyl compound such as a ketone."
+        note: "A sharp, strong peak around 1700 cm<sup>-1</sup> on an IR spectrum corresponds to a C=O stretch, which is characteristic of a carbonyl compound such as a ketone."
+    },
+
+    {
+        topic: "Synthesis",
+        question: "Which of the following methods could be used to form a carbonyl compound (aldehyde or ketone)?",
+        choices: ["alkene + O<sub>3</sub> then Me<sub>2</sub>S", "alcohol + PCC", "glycol + H<sub>5</sub>IO<sub>6</sub>", "any of these"],
+        correct: 4,
+        note: "Ozonolysis, glycol cleavage with periodic acid, and oxidation of alcohols are all possible ways of forming carbonyl compounds."
+    },
+
+    {
+        topic: "Synthesis",
+        question: "In a retrosynthesis question, if your starting material is an alkane with no other functional groups, a good bet for a first step would be:",
+        choices: ["Br<sub>2</sub> with light, heat, and/or peroxides", "Br<sub>2</sub> with dark, cold, no peroxides", "Cl<sub>2</sub> with light, heat, and/or peroxides", "Mg<sup>0</sup> in ether"],
+        correct: 1,
+        note: "One of the very few reactions that alkanes undergo is halogenation with Br<sub>2</sub> or Cl<sub>2</sub>, under free-radical conditions (i.e., light, heat, and/or peroxides). Br<sub>2</sub> without these conditions only adds to alkenes. Free-radical halogenation using Cl<sub>2</sub> is much less selective than with Br<sub>2</sub>, so Br<sub>2</sub> is almost always a better choice. (Mg<sup>0</sup> in ether converts an alkyl halide into a Grignard reagent, but we don't have an alkyl halide yet.)"
+    },
+
+    {
+        topic: "Synthesis",
+        question: "Which of the following reactions would NOT form an alkene?",
+        choices: ["tBuOK + heat on a 2&deg; alkyl halide", "NaNH<sub>2</sub> on an alkyne", "H<sub>2</sub> + Lindlar Pd on an alkyne", "H<sub>2</sub>SO<sub>4</sub> + heat on a 2&deg; alcohol"],
+        correct: 2,
+        note: "Don't confuse NaNH<sub>2</sub> with Na + NH<sub>3</sub>. NaNH<sub>2</sub> is a very strong base, used for deprotonating 1-alkynes; Na + NH<sub>3</sub> is used to reduce an alkyne to a trans-alkene."
+    },
+
+    {
+        topic: "Synthesis",
+        question: "Which of the following methods could NOT be used to synthesize an alkene?",
+        choices: ["NaOMe + heat on a 3&deg; alkyl halide", "Na + NH<sub>3</sub> on an alkyne", "H<sub>2</sub> + Pt on an alkyne", "H<sub>3</sub>PO<sub>4</sub> + heat on a 3&deg; alcohol"],
+        correct: 3,
+        note: "H<sub>2</sub> + Pt on an alkyne would reduce it all the way to an alkane -- use H<sub>2</sub> + Lindlar Pd instead to ensure the reduction stops at the alkene."
+    },
+
+    {
+        topic: "Synthesis",
+        question: "Which of the following reactions would NOT form an alkene?",
+        choices: ["tBuOK + heat on chloromethane", "tBuOK + heat on chloroethane", "Na + NH<sub>3</sub> on an alkyne", "H<sub>2</sub> + Lindlar Pd on an alkyne"],
+        correct: 1,
+        note: "Read carefully, think carefully. Chloro<u>methane</u> is a <u>methyl</u> halide, which has no beta-hydrogens and therefore cannot eliminate in an E2 reaction."
+    },
+
+    {
+        topic: "Synthesis",
+        question: "Converting an alcohol into an alkane can be done through a(n) _________________ intermediate.",
+        choices: ["alkene", "alkyl halide", "alkyne", "epoxide"],
+        correct: 1,
+        note: "Of the choices, only alkene and alkyne undergo reactions to form an alkane. Of these two, only an alkene can be prepared directly from an alcohol (via dehydration)."
+    },
+
+    {
+        topic: "Synthesis",
+        question: "Converting an alkane into an alcohol can be done through a(n) _________________ intermediate.",
+        choices: ["alkene", "alkyl halide", "alkyne", "epoxide"],
+        correct: 2,
+        note: "Alkanes only undergo one useful reaction: free-radical halogenation to form an alkyl halide. This can then be converted into an alcohol via an SN2 or SN1 reaction."
+    },
+
+    {
+        topic: "Synthesis",
+        question: "A 1&deg; alkyl halide can be converted into an aldehyde via a(n) _________________ intermediate.",
+        choices: ["ketone", "alcohol", "epoxide", "alkane"],
+        correct: 2,
+        note: "Of the given choices, only alcohols will react to form aldehydes."
+    },
+
+    {
+        topic: "Synthesis",
+        question: "A 3&deg; alkyl halide can be converted into a ketone via a(n) _________________ intermediate.",
+        choices: ["alcohol", "alkyne", "alkane", "alkene"],
+        correct: 4,
+        note: "Be careful here -- 3&deg; alcohols cannot be oxidized to form ketones! E2 of a 3&deg; alkyl halide can form an alkene, which can undergo ozonolysis to form carbonyl compounds such as ketones."
+    },
+
+    {
+        topic: "Synthesis",
+        question: "An alkyl halide can be converted into an epoxide via a(n) _________________ intermediate.",
+        choices: ["alcohol", "alkyne", "alkane", "alkene"],
+        correct: 4,
+        note: "Epoxidation is generally done from alkenes. (Another method is SN2-like ring-closing of a halohydrin.)"
+    },
+
+    {
+        topic: "Synthesis",
+        question: "Which of the following methods would NOT work well to lengthen a carbon chain?",
+        choices: ["Using a Grignard reagent to ring-open an epoxide", "Using a Grignard reagent in an SN2 on an alkyl halide", "Using an acetylide anion in an SN2 on an alkyl halide", "Using a Gilman reagent in an SN2 on an alkyl halide"],
+        correct: 2,
+        note: "All of the above reagents act as carbon nucleophiles: Grignard reagents are R-MgBr (or R-MgCl); Gilman reagents are R<sub>2</sub>CuLi. Grignard reagents can be used to ring-open epoxides, but unlike acetylides and Gilman reagents, they do not participate in SN2 reactions on alkyl halides."
     }
 ];
