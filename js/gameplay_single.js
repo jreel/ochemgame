@@ -240,8 +240,8 @@ function check_answer(clicked) {
         }
         else {
             newMsg += "<br>Game over! Better luck next time!</p>";
-            document.getElementById("divContinue").onclick = null;
-            document.getElementById("divContinue").onclick = function () {end_game()};
+            document.getElementById("btnContinue").onclick = null;
+            document.getElementById("btnContinue").onclick = function () {end_game()};
         }
     }
     if (theGame.questionBank.length > 0 && theGame.turnsLeft > 1) {
@@ -249,8 +249,8 @@ function check_answer(clicked) {
         theGame.turnsLeft--;
     }
     else {
-        document.getElementById("divContinue").onclick = null;
-        document.getElementById("divContinue").onclick = function(){end_game()};
+        document.getElementById("btnContinue").onclick = null;
+        document.getElementById("btnContinue").onclick = function(){end_game()};
     }
     document.getElementById("divContinue").style.display = "block";
 
@@ -281,7 +281,7 @@ function end_game() {
      var b = document.createElement("BUTTON");
      var t = document.createTextNode("Play Again");
      b.appendChild(t);
-    b.id = "btnAgain";
+     b.id = "btnAgain";
      qel.appendChild(b);
      b.onclick = function(){location.reload()};
 
