@@ -146,7 +146,7 @@ Game.prototype = {
             this.rounds = this.questionBank.length;
         }
         this.turnsLeft = this.rounds;
-        this.currentRound = 1;
+        this.currentRound = 0;
     }
 };
 
