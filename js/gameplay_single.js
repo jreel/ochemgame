@@ -36,28 +36,6 @@ function shuffleArray(array) {
     return array;
 }
 
-// Return an array of selected values from a SELECT element
-function getSelectValues(el) {
-    var result = [];
-    var opt = el.options;
-
-    for (var i = 0, len = opt.length; i < len; i++) {
-        if (opt[i].selected) {
-            result.push(opt[i].value || opt[i].text);
-        }
-    }
-    return result;
-}
-function countSelectValues(el) {
-    var opt = el.options;
-    var count = 0;
-    for (var i = 0; i < opt.length; i++) {
-        if (opt[i].selected) {
-            count++;
-        }
-    }
-    return count;
-}
 function sortSelect(el) {
     var tmp = [];
     for (var i = 0; i < el.options.length; i++) {
@@ -158,8 +136,16 @@ Game.prototype = {
         }
         this.questionBank = shuffleArray(this.questionBank);
 
-        this.rounds = params["numRounds"] || Math.floor(this.questionBank.length / this.numTeams);
-        this.turnsLeft = this.rounds * this.numTeams;
+        if (document.getElementById("numRounds").disabled && document.getElementById("playAll").checked) {
+            this.rounds = this.questionBank.length;
+        }
+        else if (params["numRounds"] > 0) {
+            this.rounds = Math.min(params["numRounds"], this.questionBank.length);
+        }
+        else {
+            this.rounds = this.questionBank.length;
+        }
+        this.turnsLeft = this.rounds;
         this.currentRound = 1;
     }
 };
@@ -170,7 +156,7 @@ function start_new_game() {
 
     // pass in the user-selected options
     var params = [];
-    params["numRounds"] = document.getElementById("numRounds").disabled ? 0 : document.getElementById("numRounds").value;
+    params["numRounds"] = document.getElementById("numRounds").value;
 
     params["topics"] = [];
     var seltop = document.getElementById("topicSel");
@@ -205,6 +191,7 @@ function show_new_question() {
     // this is so it can easily be recognized even after shuffling the answer choices
 
     // show question on screen, along with randomized answer choices
+    theGame.currentRound++;
     var pturn = document.getElementById("playerTurn");
     pturn.innerHTML = "Round " + theGame.currentRound;
 
@@ -260,11 +247,6 @@ function check_answer(clicked) {
     if (theGame.questionBank.length > 0 && theGame.turnsLeft > 1) {
         // decrement turnsLeft
         theGame.turnsLeft--;
-
-        if (theGame.turnsLeft%theGame.numTeams == 0) {
-            theGame.currentRound++;
-        }
-
     }
     else {
         document.getElementById("divContinue").onclick = null;
