@@ -14,15 +14,15 @@ var Questions = [
     {
         topic: "Synthesis",
         question: "Which of the following methods could NOT be used to synthesize an alcohol?",
-        choices: ["epoxide ring-opening", "acid-catalyzed dehydration", "hydroboration-oxidation", "reaction of NaOH with a 1&deg; alkyl halide"],
-        correct: 2,
+        choices: ["acid-catalyzed dehydration", "oxymercuration-reduction", "hydroboration-oxidation", "reaction of H<sub>2</sub>O with a 3&deg; alkyl halide"],
+        correct: 1,
         note: "Acid-catalyzed <u>de</u>hydration converts an alcohol into an alkene."
     },
 
     {
         topic: "Alkenes",
         question: "Which of the following reagents results in a <em>syn</em> addition to an alkene?",
-        choices: ["OsO<sub>4</sub>", "Hg(OAc)<sub>2</sub> + H<sub>2</sub>O, then NaBH<sub>4</sub>", "Br<sub>2</sub>", "HBr"],
+        choices: ["OsO<sub>4</sub> / NMO", "Hg(OAc)<sub>2</sub> + H<sub>2</sub>O, then NaBH<sub>4</sub>", "Br<sub>2</sub>", "HBr"],
         correct: 1,
         note: "OsO<sub>4</sub> adds in a syn fashion. Oxymercuration-reduction and bromination are both anti additions, and HBr addition is neither."
     },
@@ -30,7 +30,7 @@ var Questions = [
     {
         topic: "Alkenes",
         question: "Which of the following reagents does NOT result in a <em>syn</em> addition to an alkene?",
-        choices: ["H<sub>2</sub>, Pt/C", "HBr + peroxides", "BH<sub>3</sub> then H<sub>2</sub>O<sub>2</sub>", "KMnO<sub>4</sub>, OH<sup>&minus;</sup>"],
+        choices: ["H<sub>2</sub>, Pt", "HBr + peroxides", "BH<sub>3</sub> then H<sub>2</sub>O<sub>2</sub>, OH<sup>&minus;</sup>", "KMnO<sub>4</sub>, NaOH</sup>"],
         correct: 2,
         note: "HBr + peroxides is neither syn or anti addition, and is therefore the correct answer, since all the other reactions are syn additions."
     },
@@ -38,9 +38,9 @@ var Questions = [
     {
         topic: "Alkenes",
         question: "Which of the following reagents results in an <em>anti</em> addition to an alkene?",
-        choices: ["Br<sub>2</sub>", "H<sub>3</sub>O<sup>+</sup>", "Zn/Cu + CH<sub>2</sub>I<sub>2</sub>", "O<sub>3</sub> then H<sub>2</sub>O<sub>2</sub>"],
+        choices: ["Br<sub>2</sub>", "H<sub>3</sub>O<sup>+</sup>", "CH<sub>2</sub>I<sub>2</sub> + Zn(Cu)", "O<sub>3</sub> then Zn/H<sup>+</sup>"],
         correct: 1,
-        note: "Br<sub>2</sub> adds in an anti fashion. Cyclopropanation is a syn addition, while hydration and ozonolysis are neither."
+        note: "Br<sub>2</sub> adds in an anti fashion. Cyclopropanation is a syn addition; acid-catalyzed hydration and ozonolysis are neither."
     },
 
     {
@@ -48,7 +48,7 @@ var Questions = [
         question: "Which of the following reagents will produce the anti-Markovnikov product?",
         choices: ["Cl<sub>2</sub>", "OsO<sub>4</sub>", "O<sub>3</sub> then (CH<sub>3</sub>)<sub>2</sub>S", "HBr + peroxides"],
         correct: 4,
-        note: "HBr + peroxides delivers the anti-Markovnikov product, since Br adds to the less-substituted carbon. (For the other reactions, Markovnikov vs. anti-Markovnikov does not apply.)"
+        note: "HBr + peroxides delivers the anti-Markovnikov product, since Br adds to the less-substituted carbon. (For the other reactions listed here, Markovnikov vs. anti-Markovnikov does not apply.)"
     },
 
     {
@@ -56,11 +56,11 @@ var Questions = [
         question: "Which of the following reagents will produce the Markovnikov product?",
         choices: ["BH<sub>3</sub> then H<sub>2</sub>O<sub>2</sub>", "H<sub>2</sub>SO<sub>4</sub> + H<sub>2</sub>O", "mCPBA", "Br<sub>2</sub>"],
         correct: 2,
-        note: "Acid-catalyzed hydration delivers the Markovnikov product, since OH adds to the more-substituted carbon. Hydroboration-oxidation gives an anti-Markovnikov product; the other two are N/A."
+        note: "Acid-catalyzed hydration delivers the Markovnikov product, since OH adds to the more-substituted carbon. Hydroboration-oxidation gives an anti-Markovnikov product. (For the other reactions listed here, Markovnikov vs. anti-Markovnikov does not apply.)"
     },
 
     {
-        topic: "Ethers",
+        topic: "Ethers & Epoxides",
         question: "Which of the following methods could NOT be used to synthesize an ether from an alkene?",
         choices: ["oxymercuration in alcohol solvent", "acid + alcohol", "Williamson ether synthesis", "Br<sub>2</sub> + alcohol"],
         correct: 3,
@@ -78,9 +78,9 @@ var Questions = [
     {
         topic: "Alkenes",
         question: "Which of the following reagents will produce a net oxidation of the starting alkene?",
-        choices: ["H<sub>2</sub>, Pd/C", "OsO<sub>4</sub>", "BH<sub>3</sub> then H<sub>2</sub>O<sub>2</sub>", "HBr + peroxides"],
+        choices: ["H<sub>2</sub>, Pd", "OsO<sub>4</sub>", "BH<sub>3</sub> then H<sub>2</sub>O<sub>2</sub>", "HBr + peroxides"],
         correct: 2,
-        note: "Glycol formation (OsO<sub>4</sub>) results in a net oxidation, as both carbons of the alkene have their oxidation state increased. Hydrogenation (H<sub>2</sub>, Pd/C) is a net reduction. Hydroboration-oxidation (BH<sub>3</sub> then H<sub>2</sub>O<sub>2</sub>) and hydrohalogenation (HBr + peroxides) result in no net change, since one alkene carbon is reduced while the other is oxidized."
+        note: "Diol formation (OsO<sub>4</sub>) results in a net oxidation, as both carbons of the alkene have their oxidation state increased. Hydrogenation (H<sub>2</sub>, Pd/C) is a net reduction. Hydroboration-oxidation (BH<sub>3</sub> then H<sub>2</sub>O<sub>2</sub>) and hydrohalogenation (HBr + peroxides) result in no net change, since one alkene carbon is reduced while the other is oxidized."
     },
 
     {
@@ -118,21 +118,21 @@ var Questions = [
     {
         topic: "Alkenes",
         question: "What is necessary for ozonolysis to NOT remove carbon fragments from the starting material?",
-        choices: ["oxidative workup (H<sub>2</sub>O<sub>2</sub>)", "reductive workup (CH<sub>3</sub>)<sub>2</sub>S)", "at least two double bonds", "only one double bond, in a ring"],
+        choices: ["oxidative workup (H<sub>2</sub>O<sub>2</sub>)", "reductive workup (CH<sub>3</sub>)<sub>2</sub>S)", "at least two double bonds", "only one double bond in a ring"],
         correct: 4,
         randomize: false,
         note: "Ozonolysis cleaves an alkene double bond, separating the two carbons. In order for fragments to not be lost, then, the double bond must occur within a ring, such that the carbonyls are still connected by a carbon chain afterwards."
     },
 
     {
-        topic: "Ethers",
+        topic: "Ethers & Epoxides",
         question: "The Williamson ether synthesis forms an ether by reacting an alcohol with:",
         choices: ["an alkyl halide under basic conditions", "an alkyl halide under acidic conditions", "an alkene under acidic conditions", "an epoxide under basic conditions"],
         correct: 1,
         randomize: false,
         note: "Although three of the four answer choices will in fact form an ether, the Williamson ether synthesis is specifically the reaction of an alcohol with an alkyl halide under basic conditions."
     },
-
+/*
     {
         topic: "Alcohols",
         question: "Which of the following reagents will convert 1-hexanol into an aldehyde?",
@@ -154,15 +154,15 @@ var Questions = [
         correct: 4,
         note: "Any of these oxidants will convert a secondary alcohol into a ketone."
     },
-
+*/
     {
-        topic: "Epoxides",
+        topic: "Ethers & Epoxides",
         question: "Which of the following reactions could NOT be used to synthesize an epoxide?",
-        choices: ["mCPBA + alkene", "PhCO<sub>3</sub>H + alkene", "NaH + halohydrin", "ethylene oxide + alkene"],
+        choices: ["alkene + mCPBA", "alkene + CH<sub>3</sub>CO<sub>3</sub>H", "halohydrin + NaH", "ethylene oxide + strong base"],
         correct: 4,
-        note: "An alkene will react with a peroxyacid (such as mCPBA or PhCO<sub>3</sub>H) to form an epoxide. NaH will deprotonate the OH group of a halohydrin, which will form an epoxide via SN2-like displacement of the halide. Ethylene oxide is itself an epoxide and would not react with an alkene to form an epoxide."
+        note: "An alkene will react with a peroxyacid (such as mCPBA or CH<sub>3</sub>CO<sub>3</sub>H) to form an epoxide. NaH will deprotonate the OH group of a halohydrin, which will form an epoxide via SN2-like displacement of the halide. Ethylene oxide is itself an epoxide and would not react with anything to form an epoxide."
     },
-
+/*
     {
         topic: "Synthesis",
         question: "Which of the following reactions could NOT be used to synthesize a glycol?",
@@ -170,9 +170,9 @@ var Questions = [
         correct: 1,
         note: "One method of glycol formation is OsO<sub>4</sub> addition to alkenes. Another is epoxide ring-opening using either OH (basic conditions) or H<sub>2</sub>O (acidic conditions). Epoxides can also be ring-opened using other nucleophiles such as a Grignard reagent; however, this does not form a glycol."
     },
-
+*/
     {
-        topic: "Epoxides",
+        topic: "Ethers & Epoxides",
         question: "Epoxide ring-opening under acidic conditions will result in:",
         choices: ["the nucleophile adding to the more substituted carbon", "the nucleophile adding to the less substituted carbon", "either (the reaction is not regiospecific)", "neither (epoxides do not ring-open under acidic conditions)"],
         correct: 1,
@@ -181,7 +181,7 @@ var Questions = [
     },
 
     {
-        topic: "Epoxides",
+        topic: "Ethers & Epoxides",
         question: "Epoxide ring-opening under basic conditions will result in:",
         choices: ["the nucleophile adding to the more substituted carbon", "the nucleophile adding to the less substituted carbon", "either (the reaction is not regiospecific)", "neither (epoxides do not ring-open under basic conditions)"],
         correct: 2,
@@ -257,11 +257,11 @@ var Questions = [
 
     {
         topic: "SN2/E2/SN1/E1",
-        question: "Which of the following conditions will promote an E2 reaction?",
+        question: "Which of the following conditions will promote an E2 reaction over SN2?",
         choices: ["strong bulky base", "protic solvent", "3&deg; alkyl halide", "all of the above"],
         correct: 4,
         randomize: false,
-        note: "All of these conditions are favorable for an E2 reaction."
+        note: "All of these conditions are favorable for an E2 reaction and disfavorable for SN2."
     },
 
     {
@@ -587,7 +587,7 @@ var Questions = [
         correct: 1,
         note: "A sharp, strong peak around 1700 cm<sup>-1</sup> on an IR spectrum corresponds to a C=O stretch, which is characteristic of a carbonyl compound such as a ketone."
     },
-
+/*
     {
         topic: "Synthesis",
         question: "Which of the following methods could be used to form a carbonyl compound (aldehyde or ketone)?",
@@ -595,10 +595,10 @@ var Questions = [
         correct: 4,
         note: "Ozonolysis, glycol cleavage with periodic acid, and oxidation of alcohols are all possible ways of forming carbonyl compounds."
     },
-
+*/
     {
         topic: "Synthesis",
-        question: "In a retrosynthesis question, if your starting material is an alkane with no other functional groups, a good bet for a first step would be:",
+        question: "In a synthesis question, if your starting material is an alkane with no other functional groups, a good bet for a first step would be:",
         choices: ["Br<sub>2</sub> with light, heat, and/or peroxides", "Br<sub>2</sub> with dark, cold, no peroxides", "Cl<sub>2</sub> with light, heat, and/or peroxides", "Mg<sup>0</sup> in ether"],
         correct: 1,
         note: "One of the very few reactions that alkanes undergo is halogenation with Br<sub>2</sub> or Cl<sub>2</sub>, under free-radical conditions (i.e., light, heat, and/or peroxides). Br<sub>2</sub> without these conditions only adds to alkenes. Free-radical halogenation using Cl<sub>2</sub> is much less selective than with Br<sub>2</sub>, so Br<sub>2</sub> is almost always a better choice. (Mg<sup>0</sup> in ether converts an alkyl halide into a Grignard reagent, but we don't have an alkyl halide yet.)"
@@ -630,15 +630,15 @@ var Questions = [
 
     {
         topic: "Synthesis",
-        question: "Converting an alcohol into an alkane can be done through a(n) _________________ intermediate.",
-        choices: ["alkene", "alkyl halide", "alkyne", "epoxide"],
+        question: "Converting an alcohol into an alkane can be done by first converting the alcohol into a(n) _________.",
+        choices: ["alkene", "alkyl halide", "alkyne", "halohydrin"],
         correct: 1,
         note: "Of the choices, only alkene and alkyne undergo reactions to form an alkane. Of these two, only an alkene can be prepared directly from an alcohol (via dehydration)."
     },
 
     {
         topic: "Synthesis",
-        question: "Converting an alkane into an alcohol can be done through a(n) _________________ intermediate.",
+        question: "Converting an alkane into an alcohol can be done by first converting the alkane into a(n) _________.",
         choices: ["alkene", "alkyl halide", "alkyne", "epoxide"],
         correct: 2,
         note: "Alkanes only undergo one useful reaction: free-radical halogenation to form an alkyl halide. This can then be converted into an alcohol via an SN2 or SN1 reaction."
@@ -646,12 +646,12 @@ var Questions = [
 
     {
         topic: "Synthesis",
-        question: "A 1&deg; alkyl halide can be converted into an aldehyde via a(n) _________________ intermediate.",
-        choices: ["ketone", "alcohol", "epoxide", "alkane"],
+        question: "A 1&deg; alkyl halide can be converted into an aldehyde by first converting the alkyl halide into a(n) _________.",
+        choices: ["ketone", "alkene", "epoxide", "alkane"],
         correct: 2,
-        note: "Of the given choices, only alcohols will react to form aldehydes."
+        note: "Of the given choices, only alkenes will react to form aldehydes (via ozonolysis)."
     },
-
+/*
     {
         topic: "Synthesis",
         question: "A 3&deg; alkyl halide can be converted into a ketone via a(n) _________________ intermediate.",
@@ -659,15 +659,15 @@ var Questions = [
         correct: 4,
         note: "Be careful here -- 3&deg; alcohols cannot be oxidized to form ketones! E2 of a 3&deg; alkyl halide can form an alkene, which can undergo ozonolysis to form carbonyl compounds such as ketones."
     },
-
+*/
     {
         topic: "Synthesis",
-        question: "An alkyl halide can be converted into an epoxide via a(n) _________________ intermediate.",
-        choices: ["alcohol", "alkyne", "alkane", "alkene"],
+        question: "An alkyl halide can be converted into an epoxide by first converting the alkyl halide into a(n) _________.",
+        choices: ["alcohol", "alkyne", "ether", "alkene"],
         correct: 4,
         note: "Epoxidation is generally done from alkenes. (Another method is SN2-like ring-closing of a halohydrin.)"
-    },
-
+    }
+/*
     {
         topic: "Synthesis",
         question: "Which of the following methods would NOT work well to lengthen a carbon chain?",
@@ -675,4 +675,5 @@ var Questions = [
         correct: 2,
         note: "All of the above reagents act as carbon nucleophiles: Grignard reagents are R-MgBr (or R-MgCl); Gilman reagents are R<sub>2</sub>CuLi. Grignard reagents can be used to ring-open epoxides, but unlike acetylides and Gilman reagents, they do not participate in SN2 reactions on alkyl halides."
     }
+*/
 ];
