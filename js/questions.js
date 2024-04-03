@@ -466,15 +466,15 @@ var Questions = [
     {
         topic: "Acids & Bases",
         question: "Which of the following is the strongest base?",
-        choices: ["CH<sub>3</sub>CH<sub>2</sub>MgBr", "NaNH<sub>2</sub>", "KOtBu", "NaOAc"],
+        choices: ["NaH", "NaNH<sub>2</sub>", "KOtBu", "NaOAc"],
         correct: 1,
-        note: "The strongest base has the weakest conjugate acid. The conjugate acid of the Grignard reagent (CH<sub>3</sub>CH<sub>2</sub>MgBr) is an alkane, which is an incredibly weak acid (pKa ~50); therefore the Grignard reagent would be the strongest base."
+        note: "The strongest base has the weakest conjugate acid. The conjugate acid of sodium hydride (NaH = Na<sup>+</sup> and H<sup>&minus;</sup>) is diatomic hydrogen (H<sub>2</sub>), which is an incredibly weak acid (pKa ~45); therefore NaH would be the strongest base."
     },
 
     {
         topic: "Acids & Bases",
         question: "Which of the following is the weakest base?",
-        choices: ["CH<sub>3</sub>CH<sub>2</sub>MgBr", "NaNH<sub>2</sub>", "KOtBu", "NaOAc"],
+        choices: ["NaH", "NaNH<sub>2</sub>", "KOtBu", "NaOAc"],
         correct: 4,
         note: "The weakest base has the strongest conjugate acid. The conjugate acid of the NaOAc (sodium acetate) is acetic acid, which is stronger than the conjugate acid of any other choices."
     },
